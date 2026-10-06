@@ -521,6 +521,33 @@
     .panel h3{white-space:normal}
   }
 
+
+  /* ---------- PIE NUEVO ---------- */
+  footer{padding:0 0 30px;background:#060a0e}
+  .foot-cta{position:relative;overflow:hidden;color:#fff;padding:clamp(110px,14vw,190px) 0;text-align:center}
+  .foot-cta > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 60%;filter:brightness(.42) saturate(1.1)}
+  .foot-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#070c11 0%,rgba(7,12,17,.2) 30%,rgba(7,12,17,.2) 70%,#060a0e 100%);pointer-events:none}
+  .foot-cta .wrap{position:relative;z-index:2}
+  .foot-cta h2{font-size:clamp(44px,6.4vw,100px);font-weight:600;letter-spacing:-.045em;margin:20px 0 20px}
+  .foot-cta p{max-width:50ch;margin:0 auto 34px;color:rgba(255,255,255,.8);font-size:18px;line-height:1.55}
+  .foot-cta .hero-ctas{justify-content:center}
+  .foot-main{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;padding-top:70px;padding-bottom:60px;border-bottom:1px solid #18232e}
+  .foot-brand p{max-width:34ch;line-height:1.6;font-size:15px;color:#9aa6b2;margin:22px 0 22px}
+  .foot-col h5{color:#fff;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:18px}
+  .foot-col a,.foot-col span{display:block;font-size:15px;padding:6px 0;color:#9aa6b2;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{display:flex;justify-content:space-between;gap:20px;font-size:13px;color:#6f7b87;padding-top:26px;flex-wrap:wrap}
+  .foot-bottom a{text-decoration:underline}
+  /* Íconos oficiales de redes */
+  .social{display:flex;gap:10px;align-items:center}
+  .social a{width:40px;height:40px;border:0;border-radius:11px;padding:0;background:none;backdrop-filter:none;display:block;transition:transform .25s var(--ease),filter .25s}
+  .social a:hover{background:none;transform:translateY(-2px) scale(1.06);filter:brightness(1.08)}
+  .social svg{width:100%;height:100%;display:block}
+  .nav-social a{width:34px;height:34px}
+  .nav-cta{gap:14px}
+  @media (max-width:860px){ .foot-main{grid-template-columns:1fr 1fr} .foot-brand{grid-column:1/-1} }
+  @media (max-width:680px){ .nav-social a{width:30px;height:30px} .bm-line .bm-top{font-size:25px} .foot-main{grid-template-columns:1fr} }
+
   /* ---------- REVEAL ---------- */
   .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
   .rv.shown{opacity:1;transform:none}
@@ -588,6 +615,7 @@
       <a href="#contacto">Contacto</a>
     </nav>
     <div class="nav-cta">
+      <div class="social nav-social"><a href="https://www.instagram.com/rglcars/" target="_blank" rel="noopener" aria-label="Instagram de RGL Cars" title="Instagram @rglcars"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="igG1" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285aeb"/></radialGradient></defs><rect width="24" height="24" rx="6.5" fill="url(#igG1)"/><rect x="5" y="5" width="14" height="14" rx="4.2" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="16.4" cy="7.6" r="1" fill="#fff"/></svg></a><a href="https://www.facebook.com/RglCarsEspecialistasEnUsados/" target="_blank" rel="noopener" aria-label="Facebook de RGL Cars" title="Facebook RGL Cars"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path fill="#fff" d="M15.12 15.47l.53-3.47h-3.33V9.75c0-.95.47-1.88 1.95-1.88h1.51V4.92s-1.37-.23-2.68-.23c-2.74 0-4.53 1.66-4.53 4.66V12H5.53v3.47h3.04V24c.61.1 1.24.14 1.88.14s1.26-.05 1.87-.14v-8.53z"/></svg></a></div>
       <a href="#stock" class="btn btn-light">Ver stock</a>
       <button class="burger" id="burger" aria-label="Menú"><span></span><span></span></button>
     </div>
@@ -625,7 +653,7 @@
           <a href="#vender" class="btn btn-ghost">Tasar mi usado</a>
         </div>
       </div>
-      <div class="hero-side reveal-up d3"><div class="social"><span class="social-label">Seguinos</span><a href="https://www.instagram.com/rglcars/" target="_blank" rel="noopener" aria-label="Instagram de RGL Cars"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/RglCarsEspecialistasEnUsados/" target="_blank" rel="noopener" aria-label="Facebook de RGL Cars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V6.8c0-.8.5-1 .9-1h2.5V2.1L14 2c-3.8 0-4.6 2.8-4.6 4.6v1.9H7v3.9h2.4V22h4.6v-9.6h3.1l.4-3.9H14z"/></svg></a></div><div class="hero-tag"><b>RGL Cars · Río Gallegos</b><span id="heroUnits">32</span> unidades listas para entregar</div></div>
+      <div class="hero-side reveal-up d3"><div class="hero-tag"><b>RGL Cars · Río Gallegos</b><span id="heroUnits">32</span> unidades listas para entregar</div></div>
     </div>
   </div>
 </section>
@@ -849,19 +877,26 @@
 
 <!-- ================= FOOTER ================= -->
 <footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div>
-        <a href="#top" class="logo" aria-label="RGL Cars Automotores"><span class="bm bm-stack"><span class="bm-top"><b>RGL</b> <b class="c">CARS</b></span><span class="bm-sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><circle cx="12" cy="12" r="9.6"/><path d="M2.7 10.6c3.1.8 5.6 1.2 9.3 1.2s6.2-.4 9.3-1.2"/><circle cx="12" cy="13.2" r="2.1" fill="currentColor" stroke="none"/><path d="M12 15.3v6.3"/></svg>AUTOMOTORES</span></span></a>
-        <p>Usados revisados y 0km con financiación hasta el 100%. Tomamos tu usado como parte de pago.</p><div class="social" style="margin-top:22px"><a href="https://www.instagram.com/rglcars/" target="_blank" rel="noopener" aria-label="Instagram de RGL Cars"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/RglCarsEspecialistasEnUsados/" target="_blank" rel="noopener" aria-label="Facebook de RGL Cars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V6.8c0-.8.5-1 .9-1h2.5V2.1L14 2c-3.8 0-4.6 2.8-4.6 4.6v1.9H7v3.9h2.4V22h4.6v-9.6h3.1l.4-3.9H14z"/></svg></a></div>
-      </div>
-      <div><h5>Comprar</h5><a href="#stock">Stock usados</a><a href="#stock">0km</a><a href="#destacados">Destacados</a><a href="#financiacion">Financiación</a></div>
-      <div><h5>Vender</h5><a href="#vender">Cotizar mi auto</a><a href="#vender">Consignación</a><a href="#vender">Parte de pago</a></div>
-      <div><h5>Contacto</h5><a href="#" class="js-wa">WhatsApp 2966 68-0024</a><a href="tel:+542966540202">02966 54-0202</a><a href="https://www.instagram.com/rglcars/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/RglCarsEspecialistasEnUsados/" target="_blank" rel="noopener">Facebook</a></div>
+  <div class="foot-cta">
+    <img src="img/hero.jpg" alt="" loading="lazy">
+    <div class="wrap">
+      <div class="eyebrow light">Río Gallegos · Entrega inmediata</div>
+      <h2>Tu próximo auto<br>te está esperando.</h2>
+      <p>Escribinos ahora y te mandamos fotos, precio y cuotas del que te guste. Respondemos al toque.</p>
+      <div class="hero-ctas"><a href="#" class="btn btn-light js-wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.3 23.7l6.1-1.6A11.8 11.8 0 0 0 23.8 12a11.7 11.7 0 0 0-3.3-8.5ZM12 21.6a9.7 9.7 0 0 1-5-1.4l-.3-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.6Zm5.4-7.3c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-.9 1.2-.3.2-.6 0a8 8 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.4 13.4 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3Z"/></svg>Escribinos por WhatsApp</a><a href="#stock" class="btn btn-ghost">Ver todo el stock</a></div>
     </div>
-    <div class="wordmark">RGL <span class="c">CARS</span></div>
-    <div class="foot-bottom"><span>© 2026 RGL Cars Automotores · Río Gallegos, Santa Cruz.</span><span>Precios y disponibilidad sujetos a cambios · Consulte · <a href="admin.html" style="text-decoration:underline">Acceso administrador</a></span></div>
   </div>
+  <div class="wrap foot-main">
+    <div class="foot-brand">
+      <a href="#top" class="logo" aria-label="RGL Cars Automotores"><span class="bm bm-line"><span class="bm-top"><b>RGL</b> <b class="c">CARS</b></span><span class="bm-sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><circle cx="12" cy="12" r="9.6"/><path d="M2.7 10.6c3.1.8 5.6 1.2 9.3 1.2s6.2-.4 9.3-1.2"/><circle cx="12" cy="13.2" r="2.1" fill="currentColor" stroke="none"/><path d="M12 15.3v6.3"/></svg>AUTOMOTORES</span></span></a>
+      <p>Usados revisados y 0km con financiación hasta el 100%. Tomamos tu usado como parte de pago.</p>
+      <div class="social foot-social"><a href="https://www.instagram.com/rglcars/" target="_blank" rel="noopener" aria-label="Instagram de RGL Cars" title="Instagram @rglcars"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="igG2" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285aeb"/></radialGradient></defs><rect width="24" height="24" rx="6.5" fill="url(#igG2)"/><rect x="5" y="5" width="14" height="14" rx="4.2" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="16.4" cy="7.6" r="1" fill="#fff"/></svg></a><a href="https://www.facebook.com/RglCarsEspecialistasEnUsados/" target="_blank" rel="noopener" aria-label="Facebook de RGL Cars" title="Facebook RGL Cars"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path fill="#fff" d="M15.12 15.47l.53-3.47h-3.33V9.75c0-.95.47-1.88 1.95-1.88h1.51V4.92s-1.37-.23-2.68-.23c-2.74 0-4.53 1.66-4.53 4.66V12H5.53v3.47h3.04V24c.61.1 1.24.14 1.88.14s1.26-.05 1.87-.14v-8.53z"/></svg></a></div>
+    </div>
+    <div class="foot-col"><h5>Comprar</h5><a href="#stock">Stock disponible</a><a href="#destacados">Destacados</a><a href="#financiacion">Financiación</a><a href="#stock">0km</a></div>
+    <div class="foot-col"><h5>Vender</h5><a href="#vender">Tasar mi auto</a><a href="#vender">Parte de pago</a><a href="#vender">Consignación</a></div>
+    <div class="foot-col"><h5>Visitanos</h5><span>Alfonsín 177</span><span>Avellaneda y San Martín</span><span>Río Gallegos, Santa Cruz</span><a href="#" class="js-wa">WhatsApp 2966 68-0024</a><a href="tel:+542966540202">Tel. 02966 54-0202</a></div>
+  </div>
+  <div class="wrap foot-bottom"><span>© 2026 RGL Cars Automotores · Río Gallegos, Santa Cruz.</span><span>Precios y disponibilidad sujetos a cambios · <a href="admin.html">Acceso administrador</a></span></div>
 </footer>
 
 <a class="wa js-wa" href="#" aria-label="Escribinos por WhatsApp">
