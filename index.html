@@ -548,6 +548,38 @@
   @media (max-width:860px){ .foot-main{grid-template-columns:1fr 1fr} .foot-brand{grid-column:1/-1} }
   @media (max-width:680px){ .nav-social a{width:30px;height:30px} .bm-line .bm-top{font-size:25px} .foot-main{grid-template-columns:1fr} }
 
+
+  /* ---------- CELULARES Y TABLETS: liviano y sin efectos pesados ---------- */
+  .card-title{overflow-wrap:anywhere}
+  @media (hover:none), (max-width:860px){
+    body::after{display:none}                                   /* sin grano fílmico */
+    .tail-fx .puff{mix-blend-mode:normal;filter:blur(5px)}       /* vapor más liviano */
+    .tail-fx .puff:nth-of-type(3n),.tail-fx .puff:nth-of-type(3n+1){display:none}
+    .btn-ghost,.pill,.steps,.st-badge,.stage-nav button,.nav.solid,.social a{-webkit-backdrop-filter:none;backdrop-filter:none}
+    .nav.solid{background:rgba(10,17,24,.97)}
+    .show,.show > img,.hero-zoom,.st-bg{will-change:auto}
+  }
+  @media (max-width:680px){
+    .sec{padding:72px 0}
+    .sec-head{margin-bottom:28px}
+    .hero h1{font-size:40px}
+    .hero p{font-size:15px}
+    .hero-ctas .btn{flex:1 1 auto}
+    .statement h2{font-size:38px}
+    .statement-row small{font-size:11px;letter-spacing:.08em}
+    .statement-row b{font-size:40px}
+    .show-top h2{font-size:44px}
+    .show-bottom .specs b{font-size:22px}
+    .show-ctas{width:100%}
+    .show-ctas .btn{flex:1}
+    .foot-cta h2{font-size:40px}
+    .foot-cta .hero-ctas .btn{width:100%}
+    .filters select{font-size:13px;padding:0 10px}
+    .lb-top{padding:12px 14px}
+    .lb-title{font-size:15px}
+    .wa{width:54px;height:54px;right:16px;bottom:16px}
+  }
+
   /* ---------- REVEAL ---------- */
   .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
   .rv.shown{opacity:1;transform:none}
@@ -1088,7 +1120,7 @@ function buildFilters(){
   filters.innerHTML = `<div class="chips">` + [["","Todos"],["0km","0km"],...presentTypes.map(t=>[t, plural(t)])]
     .map(([v,l])=>`<button class="chip${v===fType?" active":""}" data-f="${v}">${l}</button>`).join("") + `</div>` +
     `<div class="push"><select id="fBrandSel"><option value="">Todas las marcas</option>${BRANDS.map(b=>`<option${b===fBrand?" selected":""}>${b}</option>`).join("")}</select>
-     <select id="sort"><option value="rel">Destacados primero</option><option value="asc">Menor entrega</option><option value="desc">Mayor entrega</option><option value="year">Más nuevos</option><option value="km">Menos km</option></select></div>`;
+     <select id="sort"><option value="rel">Destacados</option><option value="asc">Menor entrega</option><option value="desc">Mayor entrega</option><option value="year">Más nuevos</option><option value="km">Menos km</option></select></div>`;
   document.getElementById("sort").value = sort;
   filters.querySelectorAll(".chip").forEach(c => c.onclick = () => setFilters(c.dataset.f, fBrand, fYear));
   document.getElementById("fBrandSel").onchange = e => setFilters(fType, e.target.value, fYear);

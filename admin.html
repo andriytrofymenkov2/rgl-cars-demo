@@ -341,13 +341,13 @@ async function load(){ CARS = await RGL.all(); draw(); }
 RGL.onChange(load);
 function draw(){
   const avail = CARS.filter(c=>!c.sold), feat = avail.filter(c=>c.featured), sold = CARS.filter(c=>c.sold);
+  const show = avail.filter(c=>c.showcase);
   const withPh = avail.filter(c=>c.photos.length>1).length;
   $("stats").innerHTML = `
     <div class="stat"><span>Publicadas</span><b>${avail.length}<em>unidades</em></b></div>
     <div class="stat"><span>Portada grande</span><b>${show.length}<em>de 2</em></b></div>
     <div class="stat"><span>Vendidas</span><b>${sold.length}<em>este mes</em></b></div>
     <div class="stat"><span>Con galería de fotos</span><b>${withPh}<em>de ${avail.length}</em></b></div>`;
-  const show = avail.filter(c=>c.showcase);
   const TABS = [["all","Todas",CARS.length],["avail","Disponibles",avail.length],["show","Portada grande",show.length],["feat","Destacadas",feat.length],["sold","Vendidas",sold.length]];
   $("tabs").innerHTML = TABS.map(([k,l,n]) => `<button class="tab${k===view?" on":""}" data-v="${k}">${l}<i>${n}</i></button>`).join("");
   let l = CARS.slice();
