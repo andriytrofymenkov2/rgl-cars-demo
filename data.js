@@ -50,12 +50,17 @@
     ["Volkswagen","Taos Comfortline 250 TSI","SUV",2025,null,0,"","taos"],   // publicado en IG el 29/09
   ];
   const FEATURED = ["amarok", "hilux", "siena", "fiesta", "taos"];
-  const SHOWCASE = ["taos", "fiesta"];   // autos a pantalla completa en la web (máx. 2)
+  const SHOWCASE = ["taos", "fiesta"];
+  // Fotos ilustrativas en alta (Wikimedia Commons) para las unidades sin sesión de fotos propia.
+  // Van primero y la foto real de la placa queda como segunda. Créditos en creditos.html
+  const ILUS = ["l0_0","l0_1","l0_2","l0_3","l0_4","l0_5","l0_7","l0_8","l1_0","l1_1","l1_2","l1_3","l1_5","l1_6","l1_7","l1_8",
+                "l2_0","l2_1","l2_2","l2_3","l2_4","l2_5","l2_6","l2_8","l3_0","l3_1","l3_2","l3_3"];
+  const photosFor = (thumb, g) => g ? GAL[g].slice() : ILUS.includes(thumb) ? [`img/ilus/${thumb}.jpg`, `img/stock/${thumb}.jpg`] : [`img/stock/${thumb}.jpg`];   // autos a pantalla completa en la web (máx. 2)
 
   const defaults = () => ROWS.map(([brand, name, type, year, km, price, thumb, g], i) => ({
     id: "c" + String(i + 1).padStart(3, "0"),
     brand, name, type, year, km, price,
-    photos: g ? GAL[g].slice() : [`img/stock/${thumb}.jpg`],
+    photos: photosFor(thumb, g),
     featured: FEATURED.includes(g),
     showcase: SHOWCASE.includes(g),
     sold: false,
@@ -93,7 +98,14 @@
       if (!cars || !cars.length) {           // primera vez: carga el stock de octubre
         cars = defaults();
         await tx("readwrite", s => cars.forEach(c => s.put(c)));
-      } else if (!cars.some(c => "showcase" in c)) {   // datos de una versión anterior de la demo
+      }
+      // Agregar las fotos ilustrativas a datos guardados antes de esta versión
+      const fix = cars.filter(c => c.photos && c.photos.length === 1 && /^img\/stock\/(l\d_\d)\.jpg$/.test(c.photos[0]) && ILUS.includes(c.photos[0].match(/(l\d_\d)/)[1]));
+      if (fix.length) {
+        fix.forEach(c => { const k = c.photos[0].match(/(l\d_\d)/)[1]; c.photos = [`img/ilus/${k}.jpg`, c.photos[0]]; });
+        await tx("readwrite", s => fix.forEach(c => s.put(c)));
+      }
+      if (!cars.some(c => "showcase" in c)) {   // datos de una versión anterior de la demo
         const def = defaults();
         cars.forEach(c => { const d = def.find(x => x.id === c.id); c.showcase = d ? d.showcase : false; });
         def.filter(d => !cars.some(c => c.id === d.id)).forEach(d => cars.push(d));

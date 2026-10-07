@@ -580,6 +580,80 @@
     .wa{width:54px;height:54px;right:16px;bottom:16px}
   }
 
+  .ilus{position:absolute;z-index:2;left:12px;bottom:12px;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:999px;background:rgba(10,17,24,.72);color:rgba(255,255,255,.85)}
+
+  /* ---------- ASESOR VIRTUAL ---------- */
+  .asst{position:fixed;right:22px;bottom:96px;z-index:65;font-family:"Inter Tight",system-ui,sans-serif}
+  .asst-fab{position:relative;display:flex;align-items:center;gap:10px;height:52px;padding:0 20px 0 16px;border-radius:999px;color:#fff;font-weight:600;font-size:14.5px;letter-spacing:.01em;
+    background:linear-gradient(135deg,#123049,#0b1720);border:1px solid rgba(90,170,230,.45);box-shadow:0 14px 40px -10px rgba(44,154,216,.55),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .3s var(--ease),box-shadow .3s}
+  .asst-fab:hover{transform:translateY(-2px);box-shadow:0 18px 50px -10px rgba(44,154,216,.75)}
+  .asst-fab svg{width:22px;height:22px;color:#7cc4f2;animation:twinkle 3s ease-in-out infinite}
+  @keyframes twinkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.12) rotate(12deg)}}
+  .asst-fab::after{content:"";position:absolute;top:9px;right:12px;width:8px;height:8px;border-radius:50%;background:#2ee08a;box-shadow:0 0 0 3px #0b1720}
+  .asst.open .asst-fab{opacity:0;pointer-events:none;transform:scale(.9)}
+  .asst-tip{position:absolute;right:0;bottom:64px;width:max-content;max-width:240px;padding:12px 30px 12px 14px;border-radius:14px 14px 4px 14px;background:#fff;color:#0a1118;font-size:14px;font-weight:500;line-height:1.35;box-shadow:0 14px 40px -12px rgba(0,0,0,.5);cursor:pointer;opacity:0;transform:translateY(8px);pointer-events:none;transition:.4s var(--ease)}
+  .asst-tip.on{opacity:1;transform:none;pointer-events:auto}
+  .asst-tip button{position:absolute;top:4px;right:8px;font-size:18px;color:#6d7782;line-height:1}
+  .asst-panel{position:absolute;right:0;bottom:0;width:390px;height:min(640px,calc(100svh - 130px));display:flex;flex-direction:column;border-radius:24px;overflow:hidden;color:#e8edf2;
+    background:linear-gradient(180deg,#0e1a24 0%,#0a1219 100%);border:1px solid #1f3142;box-shadow:0 40px 90px -20px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.02) inset;
+    opacity:0;transform:translateY(20px) scale(.97);transform-origin:bottom right;pointer-events:none;transition:opacity .35s var(--ease),transform .45s var(--ease)}
+  .asst-panel.on{opacity:1;transform:none;pointer-events:auto}
+  .asst-h{display:flex;align-items:center;gap:12px;padding:16px 16px 14px 18px;border-bottom:1px solid #1a2a38;background:linear-gradient(180deg,rgba(44,154,216,.1),rgba(44,154,216,0))}
+  .asst-av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,#2c9ad8,#0d4f78);box-shadow:0 0 0 3px rgba(44,154,216,.18)}
+  .asst-av svg{width:22px;height:22px;color:#fff}
+  .asst-ht{flex:1;min-width:0}
+  .asst-ht b{display:block;font-size:15.5px;font-weight:600}
+  .asst-ht small{display:flex;align-items:center;gap:6px;font-size:12.5px;color:#8fa1b1;margin-top:2px}
+  .asst-ht small i{width:7px;height:7px;border-radius:50%;background:#2ee08a;box-shadow:0 0 8px #2ee08a}
+  .asst-x{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#9aa6b2;transition:.2s}
+  .asst-x:hover{background:rgba(255,255,255,.08);color:#fff}
+  .asst-x svg{width:18px;height:18px}
+  .asst-body{flex:1;overflow-y:auto;padding:18px 16px 8px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:#22374a transparent}
+  .msg{max-width:88%;padding:11px 14px;border-radius:18px;font-size:14.5px;line-height:1.5;animation:msgIn .4s var(--ease) both}
+  @keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .msg p{margin:0}
+  .msg.bot{align-self:flex-start;background:#15232f;border:1px solid #1d3042;border-bottom-left-radius:6px}
+  .msg.me{align-self:flex-end;background:linear-gradient(135deg,#1478b5,#0d5f92);color:#fff;border-bottom-right-radius:6px}
+  .msg b{color:#fff}
+  .dots{display:inline-flex;gap:4px;padding:4px 2px}
+  .dots i{width:7px;height:7px;border-radius:50%;background:#7f94a6;animation:dot 1.2s infinite}
+  .dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+  @keyframes dot{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+  .asst-chips{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 4px}
+  .asst-chips button{padding:8px 13px;border-radius:999px;border:1px solid #284257;background:rgba(44,154,216,.07);color:#cfe3f1;font-size:13px;font-weight:500;transition:.2s}
+  .asst-chips button:hover{background:#2c9ad8;border-color:#2c9ad8;color:#fff}
+  .asst-cars{display:grid;gap:8px;margin-top:10px}
+  .asst-car{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:8px;border-radius:14px;background:#0f1a24;border:1px solid #1d3042}
+  .asst-car img{width:96px;height:100%;min-height:78px;object-fit:cover;border-radius:10px}
+  .asst-car b{display:block;font-size:13.5px;line-height:1.25}
+  .asst-car small{display:block;font-size:12px;color:#8fa1b1;margin-top:2px}
+  .asst-car .p{display:block;font-size:13.5px;font-weight:700;color:#fff;margin-top:4px}
+  .asst-car .p em{font-style:normal;font-weight:500;font-size:11px;color:#8fa1b1}
+  .asst-car .r{display:flex;gap:6px;margin-top:7px}
+  .asst-car .r button,.asst-car .r a{font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;border:1px solid #2a4054;color:#dbe8f1}
+  .asst-car .r a{background:#fff;color:#0a1118;border-color:#fff}
+  .asst-more,.asst-link,.asst-wa{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;font-weight:600;color:#7cc4f2}
+  .asst-link{display:flex}
+  .asst-wa{padding:8px 14px;border-radius:999px;background:#25d366;color:#fff}
+  .asst-wa svg{width:16px;height:16px}
+  .asst-f{display:flex;gap:8px;padding:12px 14px 6px;border-top:1px solid #1a2a38}
+  .asst-f input{flex:1;height:46px;border-radius:999px;border:1px solid #243a4d;background:#0f1a24;color:#fff;padding:0 18px;font:inherit;font-size:14.5px;outline:none;transition:border-color .2s}
+  .asst-f input:focus{border-color:#2c9ad8}
+  .asst-f input::placeholder{color:#62778a}
+  .asst-f button{width:46px;height:46px;border-radius:50%;background:#2c9ad8;color:#fff;display:grid;place-items:center;transition:.2s}
+  .asst-f button:hover{background:#45aae6}
+  .asst-f button svg{width:20px;height:20px}
+  .asst-note{font-size:11px;color:#5f7386;text-align:center;padding:4px 16px 12px}
+  @media (max-width:680px){
+    .asst{right:16px;bottom:82px}
+    .asst-fab{width:52px;padding:0;justify-content:center}
+    .asst-fab span{display:none}
+    .asst-fab::after{top:6px;right:6px}
+    .asst.open{inset:0;right:0;bottom:0}
+    .asst-panel{position:fixed;inset:0;width:auto;height:100%;border-radius:0;border:0}
+    .asst-tip{bottom:60px}
+  }
+
   /* ---------- REVEAL ---------- */
   .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
   .rv.shown{opacity:1;transform:none}
@@ -928,7 +1002,7 @@
     <div class="foot-col"><h5>Vender</h5><a href="#vender">Tasar mi auto</a><a href="#vender">Parte de pago</a><a href="#vender">Consignación</a></div>
     <div class="foot-col"><h5>Visitanos</h5><span>Alfonsín 177</span><span>Avellaneda y San Martín</span><span>Río Gallegos, Santa Cruz</span><a href="#" class="js-wa">WhatsApp 2966 68-0024</a><a href="tel:+542966540202">Tel. 02966 54-0202</a></div>
   </div>
-  <div class="wrap foot-bottom"><span>© 2026 RGL Cars Automotores · Río Gallegos, Santa Cruz.</span><span>Precios y disponibilidad sujetos a cambios · <a href="admin.html">Acceso administrador</a></span></div>
+  <div class="wrap foot-bottom"><span>© 2026 RGL Cars Automotores · Río Gallegos, Santa Cruz.</span><span>Precios y disponibilidad sujetos a cambios · <a href="creditos.html">Créditos de imágenes</a> · <a href="admin.html">Acceso administrador</a></span></div>
 </footer>
 
 <a class="wa js-wa" href="#" aria-label="Escribinos por WhatsApp">
@@ -953,7 +1027,7 @@
   <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
 
-<script src="data.js"></script>
+<script src="data.js?v=3"></script>
 <script>
 const WHATSAPP = "5492966680024"; // WhatsApp de RGL Cars (2966 68-0024)
 const wa = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
@@ -979,6 +1053,7 @@ const carImgs = c => c.photos && c.photos.length ? c.photos : ["img/logo-rgl.jpg
 const relSort = (a,b) => (a.sold?1:0)-(b.sold?1:0) || (b.featured?1:0)-(a.featured?1:0) || (carImgs(b).length>1?1:0)-(carImgs(a).length>1?1:0) || (b.created||0)-(a.created||0);
 const live = () => STOCK.filter(c => !c.sold);
 const byId = id => STOCK.find(c => c.id === id);
+const isIlus = c => /\/ilus\//.test(carImgs(c)[0]);
 
 /* ====== VISOR DE FOTOS ====== */
 const lb = document.getElementById("lb"), lbImg = document.getElementById("lbImg"), lbThumbs = document.getElementById("lbThumbs");
@@ -1004,7 +1079,7 @@ function showLB(k){
 }
 function closeLB(){ lb.classList.remove("open"); lb.setAttribute("aria-hidden","true"); document.body.style.overflow = ""; }
 const openGallery = key => { const g = GALLERIES[key]; openLB(g.imgs, g.title, g.sub, `${g.title} ${g.sub.split(" · ").slice(0,2).join(" ")}`); };
-const openCar = c => c && openLB(carImgs(c), `${c.brand} ${c.name}`, `${c.year} · ${fmtKm(c.km)} · ${c.sold?"Vendido":c.price?ars(c.price)+" entrega + cuotas":"Consulte precio"}${c.desc?" · "+c.desc:""}`, `${c.brand} ${c.name} ${c.year}`);
+const openCar = c => c && openLB(carImgs(c), `${c.brand} ${c.name}`, `${c.year} · ${fmtKm(c.km)} · ${c.sold?"Vendido":c.price?ars(c.price)+" entrega + cuotas":"Consulte precio"}${c.desc?" · "+c.desc:""}${isIlus(c)?" · Foto 1: imagen ilustrativa del modelo · Foto 2: la unidad real":""}`, `${c.brand} ${c.name} ${c.year}`);
 document.getElementById("lbClose").onclick = closeLB;
 document.getElementById("lbPrev").onclick = () => showLB(lbIdx-1);
 document.getElementById("lbNext").onclick = () => showLB(lbIdx+1);
@@ -1095,7 +1170,7 @@ function render(){
       <div class="card-img" data-id="${c.id}">
         <img src="${carImgs(c)[0]}" alt="${c.brand} ${c.name}" loading="lazy">
         <span class="badge ${c.sold?"sold":c.km===0?"okm":""}">${c.sold?"VENDIDO":c.km===0?"0KM":"USADO"}</span>
-        <span class="pill">${n>1 ? ic.cam + n + " fotos" : ic.zoom + "Ampliar"}</span>
+        <span class="pill">${n>1 ? ic.cam + n + " fotos" : ic.zoom + "Ampliar"}</span>${isIlus(c) ? '<span class="ilus">Imagen ilustrativa</span>' : ""}
       </div>
       <div class="card-body">
         <div class="card-brand">${c.brand}</div>
@@ -1425,5 +1500,6 @@ let lastSY = scrollY, skew = 0;
   requestAnimationFrame(sk);
 })();
 </script>
+<script src="assistant.js?v=6"></script>
 </body>
 </html>
