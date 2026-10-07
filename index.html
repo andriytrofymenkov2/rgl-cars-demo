@@ -654,6 +654,25 @@
     .asst-tip{bottom:60px}
   }
 
+
+  /* Faros del Camaro: brillo blanco azulado sobre la foto */
+  .st-glow{position:absolute;left:0;right:0;top:-10%;height:120%;z-index:1;pointer-events:none;will-change:transform}
+  .hl-box{position:absolute;opacity:0}
+  .statement.lit .hl-box{animation:hlOn 1.6s .2s forwards}
+  .hl-box i{position:absolute;display:block;border-radius:50%;mix-blend-mode:screen;animation:hlPulse 4.2s ease-in-out infinite}
+  .hl-halo{left:61%;top:47%;width:30%;height:25%;background:radial-gradient(closest-side,rgba(165,212,255,.5),rgba(120,180,255,.18) 55%,rgba(120,180,255,0));filter:blur(18px)}
+  .hl-flare{left:52%;top:58.4%;width:50%;height:.9%;border-radius:0!important;background:linear-gradient(90deg,rgba(150,205,255,0),rgba(190,225,255,.75) 50%,rgba(150,205,255,0));filter:blur(1.5px)}
+  .hl-core{left:70%;top:55%;width:14%;height:9%;background:radial-gradient(closest-side,rgba(240,248,255,.95),rgba(160,205,255,.55) 50%,rgba(120,180,255,0));filter:blur(6px)}
+  .hl-led{left:71.6%;top:57.2%;width:10.8%;height:3.6%;background:radial-gradient(closest-side,#fff,rgba(220,238,255,.8) 45%,rgba(160,205,255,0));filter:blur(2.5px)}
+  .hl-drl{left:79.9%;top:68.2%;width:3.6%;height:11%;border-radius:40%!important;background:radial-gradient(closest-side,#fff,rgba(210,232,255,.75) 50%,rgba(160,205,255,0));filter:blur(3px)}
+  .hl-halo.b{left:39%;top:46%;width:18%;height:22%}
+  .hl-core.b{left:44.6%;top:51.6%;width:7.4%;height:7.6%}
+  .hl-led.b{left:46.2%;top:54%;width:4.2%;height:3.2%}
+  .hl-drl.b{left:44.7%;top:60.4%;width:2.2%;height:7.6%}
+  .hl-flare{left:62%;width:30%}
+  @keyframes hlPulse{0%,100%{opacity:.7}50%{opacity:1}}
+  @keyframes hlOn{0%{opacity:0}10%{opacity:.9}16%{opacity:.15}26%{opacity:1}32%{opacity:.4}100%{opacity:1}}
+
   /* ---------- REVEAL ---------- */
   .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
   .rv.shown{opacity:1;transform:none}
@@ -699,7 +718,7 @@
     .lb-stage .lb-btn{width:44px;height:44px;background:rgba(0,0,0,.45)}
     .lb-thumbs{justify-content:flex-start}
   }
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.tail-fx,.card,.story-steps .st{opacity:1;transform:none}body::after{display:none}.card .card-img{clip-path:none}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.tail-fx,.card,.story-steps .st,.hl-box{opacity:1;transform:none}body::after{display:none}.card .card-img{clip-path:none}}
 </style>
 </head>
 <body>
@@ -767,6 +786,10 @@
 <!-- ================= STATEMENT ================= -->
 <section class="statement">
   <div class="st-bg" id="stBg"><img src="img/showroom.jpg" alt=""></div>
+  <div class="st-glow" id="stGlow" aria-hidden="true"><div class="hl-box" id="hlBox">
+    <i class="hl-halo"></i><i class="hl-flare"></i><i class="hl-core"></i><i class="hl-led"></i><i class="hl-drl"></i>
+    <i class="hl-halo b"></i><i class="hl-core b"></i><i class="hl-led b"></i><i class="hl-drl b"></i>
+  </div></div>
   <div class="st-in">
     <div class="eyebrow rv">Stock de octubre · Entrega inmediata</div>
     <h2 class="rv">Tu próximo auto ya está en la agencia.</h2>
@@ -1371,6 +1394,17 @@ heroImg.complete ? fitTail() : heroImg.addEventListener("load", fitTail);
 });
 addEventListener("resize", fitTail);
 
+/* ====== Faros del Camaro: alinear el brillo con la foto y encender al aparecer ====== */
+const stImg = document.querySelector("#stBg img"), hlBox = document.getElementById("hlBox"), stGlow = document.getElementById("stGlow");
+function fitHL(){
+  const W = stGlow.clientWidth, H = stGlow.clientHeight, iw = stImg.naturalWidth || 2200, ih = stImg.naturalHeight || 1300;
+  const k = Math.max(W/iw, H/ih), w = iw*k, h = ih*k;
+  Object.assign(hlBox.style, {width:w+"px", height:h+"px", left:(W-w)*0.60+"px", top:(H-h)*0.55+"px"});
+}
+stImg.complete ? fitHL() : stImg.addEventListener("load", fitHL);
+addEventListener("resize", fitHL);
+new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("lit"); o.disconnect(); } }), {threshold:.35}).observe(document.querySelector(".statement"));
+
 /* ====== EFECTOS (inspirados en Rivian y las referencias) ====== */
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -1438,7 +1472,7 @@ function fx(){
     document.getElementById("storyBar").style.transform = `translateX(${best*100}%)`;
   }
   const sr = stBg.parentElement.getBoundingClientRect();
-  if (sr.bottom > 0 && sr.top < vh) stBg.style.transform = `translateY(${-sr.top * 0.09}px)`;
+  if (sr.bottom > 0 && sr.top < vh) stBg.style.transform = document.getElementById("stGlow").style.transform = `translateY(${-sr.top * 0.09}px)`;
   shows.forEach(s => {
     const r = s.getBoundingClientRect();
     if (r.bottom < 0 || r.top > vh) return;
